@@ -28,22 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.resultListBox = new System.Windows.Forms.ListBox();
             this.categoryComboBox = new System.Windows.Forms.ComboBox();
             this.subCategoryComboBox = new System.Windows.Forms.ComboBox();
             this.categoryLabel = new System.Windows.Forms.Label();
             this.subcategoryLabel = new System.Windows.Forms.Label();
+            this.resultListView = new System.Windows.Forms.ListView();
             this.SuspendLayout();
-            // 
-            // resultListBox
-            // 
-            this.resultListBox.FormattingEnabled = true;
-            this.resultListBox.ItemHeight = 16;
-            this.resultListBox.Location = new System.Drawing.Point(28, 133);
-            this.resultListBox.Margin = new System.Windows.Forms.Padding(4);
-            this.resultListBox.Name = "resultListBox";
-            this.resultListBox.Size = new System.Drawing.Size(756, 356);
-            this.resultListBox.TabIndex = 0;
             // 
             // categoryComboBox
             // 
@@ -51,17 +41,19 @@
             this.categoryComboBox.Location = new System.Drawing.Point(16, 27);
             this.categoryComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.categoryComboBox.Name = "categoryComboBox";
-            this.categoryComboBox.Size = new System.Drawing.Size(159, 24);
+            this.categoryComboBox.Size = new System.Drawing.Size(125, 24);
             this.categoryComboBox.TabIndex = 1;
+            this.categoryComboBox.SelectedIndexChanged += new System.EventHandler(this.categoryComboBox_SelectedIndexChanged);
             // 
             // subCategoryComboBox
             // 
             this.subCategoryComboBox.FormattingEnabled = true;
-            this.subCategoryComboBox.Location = new System.Drawing.Point(208, 27);
+            this.subCategoryComboBox.Location = new System.Drawing.Point(168, 27);
             this.subCategoryComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.subCategoryComboBox.Name = "subCategoryComboBox";
-            this.subCategoryComboBox.Size = new System.Drawing.Size(136, 24);
+            this.subCategoryComboBox.Size = new System.Drawing.Size(111, 24);
             this.subCategoryComboBox.TabIndex = 2;
+            this.subCategoryComboBox.SelectedIndexChanged += new System.EventHandler(this.subCategoryComboBox_SelectedIndexChanged);
             // 
             // categoryLabel
             // 
@@ -75,22 +67,32 @@
             // subcategoryLabel
             // 
             this.subcategoryLabel.AutoSize = true;
-            this.subcategoryLabel.Location = new System.Drawing.Point(205, 7);
+            this.subcategoryLabel.Location = new System.Drawing.Point(165, 7);
             this.subcategoryLabel.Name = "subcategoryLabel";
             this.subcategoryLabel.Size = new System.Drawing.Size(85, 16);
             this.subcategoryLabel.TabIndex = 5;
             this.subcategoryLabel.Text = "Subcategory";
+            // 
+            // resultListView
+            // 
+            this.resultListView.HideSelection = false;
+            this.resultListView.Location = new System.Drawing.Point(29, 139);
+            this.resultListView.Name = "resultListView";
+            this.resultListView.Size = new System.Drawing.Size(746, 354);
+            this.resultListView.TabIndex = 6;
+            this.resultListView.UseCompatibleStateImageBehavior = false;
+            this.resultListView.View = System.Windows.Forms.View.List;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(817, 521);
+            this.Controls.Add(this.resultListView);
             this.Controls.Add(this.subcategoryLabel);
             this.Controls.Add(this.categoryLabel);
             this.Controls.Add(this.subCategoryComboBox);
             this.Controls.Add(this.categoryComboBox);
-            this.Controls.Add(this.resultListBox);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
@@ -102,12 +104,11 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.ListBox resultListBox;
         private System.Windows.Forms.ComboBox categoryComboBox;
         private System.Windows.Forms.ComboBox subCategoryComboBox;
         private System.Windows.Forms.Label categoryLabel;
         private System.Windows.Forms.Label subcategoryLabel;
+        private System.Windows.Forms.ListView resultListView;
     }
 }
 
