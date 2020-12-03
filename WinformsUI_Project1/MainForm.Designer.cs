@@ -33,10 +33,13 @@
             this.categoryLabel = new System.Windows.Forms.Label();
             this.subcategoryLabel = new System.Windows.Forms.Label();
             this.resultListView = new System.Windows.Forms.ListView();
+<<<<<<< HEAD
             this.styleComboBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.sizeComboBox = new System.Windows.Forms.ComboBox();
             this.SizeLabel = new System.Windows.Forms.Label();
+=======
+>>>>>>> faa1180141c4e4c54ee49aadd8a4fa6db1bbef73
             this.SuspendLayout();
             // 
             // categoryComboBox
@@ -82,11 +85,16 @@
             this.resultListView.HideSelection = false;
             this.resultListView.Location = new System.Drawing.Point(29, 139);
             this.resultListView.Name = "resultListView";
+<<<<<<< HEAD
             this.resultListView.Size = new System.Drawing.Size(762, 354);
+=======
+            this.resultListView.Size = new System.Drawing.Size(746, 354);
+>>>>>>> faa1180141c4e4c54ee49aadd8a4fa6db1bbef73
             this.resultListView.TabIndex = 6;
             this.resultListView.UseCompatibleStateImageBehavior = false;
             this.resultListView.View = System.Windows.Forms.View.List;
             // 
+<<<<<<< HEAD
             // styleComboBox
             // 
             this.styleComboBox.FormattingEnabled = true;
@@ -123,15 +131,20 @@
             this.SizeLabel.TabIndex = 10;
             this.SizeLabel.Text = "Size";
             // 
+=======
+>>>>>>> faa1180141c4e4c54ee49aadd8a4fa6db1bbef73
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(817, 521);
+<<<<<<< HEAD
             this.Controls.Add(this.SizeLabel);
             this.Controls.Add(this.sizeComboBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.styleComboBox);
+=======
+>>>>>>> faa1180141c4e4c54ee49aadd8a4fa6db1bbef73
             this.Controls.Add(this.resultListView);
             this.Controls.Add(this.subcategoryLabel);
             this.Controls.Add(this.categoryLabel);
@@ -153,10 +166,13 @@
         private System.Windows.Forms.Label categoryLabel;
         private System.Windows.Forms.Label subcategoryLabel;
         private System.Windows.Forms.ListView resultListView;
+<<<<<<< HEAD
         private System.Windows.Forms.ComboBox styleComboBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox sizeComboBox;
         private System.Windows.Forms.Label SizeLabel;
+=======
+>>>>>>> faa1180141c4e4c54ee49aadd8a4fa6db1bbef73
     }
 }
 
