@@ -1,21 +1,20 @@
-﻿using Dapper;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Configuration;
-using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
+using Dapper;
+using System.ComponentModel;
+using System.Configuration;
+using System.Data;
 
 namespace WinformsUI_Project1
 {
-    public partial class MainForm : Form
+    public class ConsultsSQL
     {
-        private List<ProductModel> productModels;
-        public void SelectCategory()
+       /* public List<ProductModel> productModels;
+        MainForm mf = new MainForm();
+        public new void SelectCategory()
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("AdventureWorksDB")))
             {
@@ -88,7 +87,6 @@ namespace WinformsUI_Project1
                     else
                     {
                         styleComboBox.Items.Add(style);
-                        styleComboBox.Enabled = true;
                     }
                 }
             }
@@ -124,7 +122,6 @@ namespace WinformsUI_Project1
                     else
                     {
                         sizeComboBox.Items.Add(size);
-                        sizeComboBox.Enabled = true;
                     }
                 }
             }
@@ -142,123 +139,6 @@ namespace WinformsUI_Project1
                     resultListView.Items.Add(productModel.ToString());
                 }
             }
-        }
-
-        public void SelectClass()
-        {
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("AdventureWorksDB")))
-            {
-                string classSQL = $"SELECT DISTINCT Production.Product.Class FROM Production.Product INNER JOIN Production.ProductSubcategory ON Production.Product.ProductSubcategoryID = Production.ProductSubcategory.ProductSubcategoryID INNER JOIN Production.ProductCategory ON Production.ProductSubcategory.ProductCategoryID = Production.ProductCategory.ProductCategoryID INNER JOIN Production.ProductModel ON Production.Product.ProductModelID = Production.ProductModel.ProductModelID INNER JOIN Production.ProductModelProductDescriptionCulture ON Production.ProductModel.ProductModelID = Production.ProductModelProductDescriptionCulture.ProductModelID  INNER JOIN Production.ProductDescription ON Production.ProductModelProductDescriptionCulture.ProductDescriptionID = Production.ProductDescription.ProductDescriptionID WHERE ProductModelProductDescriptionCulture.CultureID = 'en'AND Production.ProductSubcategory.Name = '{subCategoryComboBox.SelectedItem}' AND Product.ProductModelID IS NOT NULL";
-                List<string> classes = new List<string>();
-                classes = connection.Query<string>(classSQL).ToList();
-                classComboBox.Items.Clear();
-                foreach (string class1 in classes)
-                {
-                    if (class1 == null)
-                    {
-                        classComboBox.Enabled = false;
-                    }
-                    else
-                    {
-                        classComboBox.Items.Add(class1);
-                        classComboBox.Enabled = false;
-                    }
-                }
-            }
-        }
-
-        public void AddClassListView()
-        {
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("AdventureWorksDB")))
-            {
-                string addClassSQL = $"SELECT DISTINCT Production.ProductModel.Name, Production.ProductDescription.Description FROM Production.Product INNER JOIN Production.ProductSubcategory ON Production.Product.ProductSubcategoryID = Production.ProductSubcategory.ProductSubcategoryID INNER JOIN Production.ProductModel ON Production.Product.ProductModelID = Production.ProductModel.ProductModelID INNER JOIN Production.ProductCategory ON Production.ProductSubcategory.ProductCategoryID = Production.ProductCategory.ProductCategoryID INNER JOIN Production.ProductModelProductDescriptionCulture ON Production.ProductModel.ProductModelID = Production.ProductModelProductDescriptionCulture.ProductModelID INNER JOIN Production.ProductDescription ON Production.ProductDescription.ProductDescriptionID = Production.ProductModelProductDescriptionCulture.ProductDescriptionID WHERE Production.ProductModelProductDescriptionCulture.CultureID = 'en' AND Production.ProductSubcategory.Name = '{subCategoryComboBox.SelectedItem}' AND Production.Product.Class = '{classComboBox.SelectedItem}' AND Product.ProductModelID IS NOT NULL";
-                productModels = new List<ProductModel>();
-                productModels = connection.Query<ProductModel>(addClassSQL).ToList();
-                resultListView.Items.Clear();
-                foreach (ProductModel productModel in productModels)
-                {
-                    resultListView.Items.Add(productModel.ToString());
-                }
-            } 
-        }
-        public void SelectColor()
-        {
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("AdventureWorksDB")))
-            {
-                string colorSQL = $"SELECT DISTINCT Production.Product.Color FROM Production.Product INNER JOIN Production.ProductSubcategory ON Production.Product.ProductSubcategoryID = Production.ProductSubcategory.ProductSubcategoryID INNER JOIN Production.ProductCategory ON Production.ProductSubcategory.ProductCategoryID = Production.ProductCategory.ProductCategoryID INNER JOIN Production.ProductModel ON Production.Product.ProductModelID = Production.ProductModel.ProductModelID INNER JOIN Production.ProductModelProductDescriptionCulture ON Production.ProductModel.ProductModelID = Production.ProductModelProductDescriptionCulture.ProductModelID  INNER JOIN Production.ProductDescription ON Production.ProductModelProductDescriptionCulture.ProductDescriptionID = Production.ProductDescription.ProductDescriptionID WHERE ProductModelProductDescriptionCulture.CultureID = 'en'AND Production.ProductSubcategory.Name = '{subCategoryComboBox.SelectedItem}' AND Product.ProductModelID IS NOT NULL";
-                List<string> colors = new List<string>();
-                colors = connection.Query<string>(colorSQL).ToList();
-                colourComboBox.Items.Clear();
-                foreach (string colour in colors)
-                {
-                    if (colour == null)
-                    {
-                        colourComboBox.Enabled = false;
-                    }
-                    else
-                    {
-                        colourComboBox.Items.Add(colour); 
-                        colourComboBox.Enabled = true;
-                    }
-                }
-            }
-        }
-        public void AddColorListView()
-        {
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("AdventureWorksDB")))
-            {
-                string addColorSQL = $"SELECT DISTINCT Production.ProductModel.Name, Production.ProductDescription.Description FROM Production.Product INNER JOIN Production.ProductSubcategory ON Production.Product.ProductSubcategoryID = Production.ProductSubcategory.ProductSubcategoryID INNER JOIN Production.ProductModel ON Production.Product.ProductModelID = Production.ProductModel.ProductModelID INNER JOIN Production.ProductCategory ON Production.ProductSubcategory.ProductCategoryID = Production.ProductCategory.ProductCategoryID INNER JOIN Production.ProductModelProductDescriptionCulture ON Production.ProductModel.ProductModelID = Production.ProductModelProductDescriptionCulture.ProductModelID INNER JOIN Production.ProductDescription ON Production.ProductDescription.ProductDescriptionID = Production.ProductModelProductDescriptionCulture.ProductDescriptionID WHERE Production.ProductModelProductDescriptionCulture.CultureID = 'en' AND Production.ProductSubcategory.Name = '{subCategoryComboBox.SelectedItem}' AND Production.Product.Color = '{colourComboBox.SelectedItem}' AND Product.ProductModelID IS NOT NULL";
-                productModels = new List<ProductModel>();
-                productModels = connection.Query<ProductModel>(addColorSQL).ToList();
-                resultListView.Items.Clear();
-                foreach (ProductModel productModel in productModels)
-                {
-                    resultListView.Items.Add(productModel.ToString());
-                }
-            }
-        }
-        public MainForm()
-        {
-            InitializeComponent();
-        }
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            SelectCategory();
-        }
-
-        private void categoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            SelectSubCategory();
-            AddCatListView();
-        }
-
-        private void subCategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            AddSubListView();
-            SelectStyle();
-            SelecSize();
-            SelectClass();
-            SelectColor();
-        }
-
-        private void styleComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            AddStyleListView();
-        }
-
-        private void sizeComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            AddSizeListView();
-        }
-
-        private void classComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            AddClassListView();
-        }
-
-        private void colourComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            AddColorListView();
-        }
+        }*/
     }
 }

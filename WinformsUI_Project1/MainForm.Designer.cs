@@ -33,13 +33,14 @@
             this.categoryLabel = new System.Windows.Forms.Label();
             this.subcategoryLabel = new System.Windows.Forms.Label();
             this.resultListView = new System.Windows.Forms.ListView();
-<<<<<<< HEAD
             this.styleComboBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.sizeComboBox = new System.Windows.Forms.ComboBox();
             this.SizeLabel = new System.Windows.Forms.Label();
-=======
->>>>>>> faa1180141c4e4c54ee49aadd8a4fa6db1bbef73
+            this.classComboBox = new System.Windows.Forms.ComboBox();
+            this.classLabel = new System.Windows.Forms.Label();
+            this.colourComboBox = new System.Windows.Forms.ComboBox();
+            this.colourLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // categoryComboBox
@@ -85,29 +86,24 @@
             this.resultListView.HideSelection = false;
             this.resultListView.Location = new System.Drawing.Point(29, 139);
             this.resultListView.Name = "resultListView";
-<<<<<<< HEAD
             this.resultListView.Size = new System.Drawing.Size(762, 354);
-=======
-            this.resultListView.Size = new System.Drawing.Size(746, 354);
->>>>>>> faa1180141c4e4c54ee49aadd8a4fa6db1bbef73
             this.resultListView.TabIndex = 6;
             this.resultListView.UseCompatibleStateImageBehavior = false;
             this.resultListView.View = System.Windows.Forms.View.List;
             // 
-<<<<<<< HEAD
             // styleComboBox
             // 
             this.styleComboBox.FormattingEnabled = true;
-            this.styleComboBox.Location = new System.Drawing.Point(312, 27);
+            this.styleComboBox.Location = new System.Drawing.Point(298, 27);
             this.styleComboBox.Name = "styleComboBox";
-            this.styleComboBox.Size = new System.Drawing.Size(52, 24);
+            this.styleComboBox.Size = new System.Drawing.Size(49, 24);
             this.styleComboBox.TabIndex = 7;
             this.styleComboBox.SelectedIndexChanged += new System.EventHandler(this.styleComboBox_SelectedIndexChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(309, 8);
+            this.label1.Location = new System.Drawing.Point(295, 7);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(38, 16);
             this.label1.TabIndex = 8;
@@ -116,7 +112,7 @@
             // sizeComboBox
             // 
             this.sizeComboBox.FormattingEnabled = true;
-            this.sizeComboBox.Location = new System.Drawing.Point(388, 27);
+            this.sizeComboBox.Location = new System.Drawing.Point(408, 27);
             this.sizeComboBox.Name = "sizeComboBox";
             this.sizeComboBox.Size = new System.Drawing.Size(49, 24);
             this.sizeComboBox.TabIndex = 9;
@@ -125,26 +121,61 @@
             // SizeLabel
             // 
             this.SizeLabel.AutoSize = true;
-            this.SizeLabel.Location = new System.Drawing.Point(388, 8);
+            this.SizeLabel.Location = new System.Drawing.Point(405, 7);
             this.SizeLabel.Name = "SizeLabel";
             this.SizeLabel.Size = new System.Drawing.Size(34, 16);
             this.SizeLabel.TabIndex = 10;
             this.SizeLabel.Text = "Size";
             // 
-=======
->>>>>>> faa1180141c4e4c54ee49aadd8a4fa6db1bbef73
+            // classComboBox
+            // 
+            this.classComboBox.FormattingEnabled = true;
+            this.classComboBox.Location = new System.Drawing.Point(353, 27);
+            this.classComboBox.Name = "classComboBox";
+            this.classComboBox.Size = new System.Drawing.Size(49, 24);
+            this.classComboBox.TabIndex = 11;
+            this.classComboBox.SelectedIndexChanged += new System.EventHandler(this.classComboBox_SelectedIndexChanged);
+            // 
+            // classLabel
+            // 
+            this.classLabel.AutoSize = true;
+            this.classLabel.Location = new System.Drawing.Point(353, 7);
+            this.classLabel.Name = "classLabel";
+            this.classLabel.Size = new System.Drawing.Size(42, 16);
+            this.classLabel.TabIndex = 12;
+            this.classLabel.Text = "Class";
+            // 
+            // colourComboBox
+            // 
+            this.colourComboBox.FormattingEnabled = true;
+            this.colourComboBox.Location = new System.Drawing.Point(463, 27);
+            this.colourComboBox.Name = "colourComboBox";
+            this.colourComboBox.Size = new System.Drawing.Size(68, 24);
+            this.colourComboBox.TabIndex = 13;
+            this.colourComboBox.SelectedIndexChanged += new System.EventHandler(this.colourComboBox_SelectedIndexChanged);
+            // 
+            // colourLabel
+            // 
+            this.colourLabel.AutoSize = true;
+            this.colourLabel.Location = new System.Drawing.Point(463, 7);
+            this.colourLabel.Name = "colourLabel";
+            this.colourLabel.Size = new System.Drawing.Size(47, 16);
+            this.colourLabel.TabIndex = 14;
+            this.colourLabel.Text = "Colour";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(817, 521);
-<<<<<<< HEAD
+            this.Controls.Add(this.colourLabel);
+            this.Controls.Add(this.colourComboBox);
+            this.Controls.Add(this.classLabel);
+            this.Controls.Add(this.classComboBox);
             this.Controls.Add(this.SizeLabel);
             this.Controls.Add(this.sizeComboBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.styleComboBox);
-=======
->>>>>>> faa1180141c4e4c54ee49aadd8a4fa6db1bbef73
             this.Controls.Add(this.resultListView);
             this.Controls.Add(this.subcategoryLabel);
             this.Controls.Add(this.categoryLabel);
@@ -166,13 +197,14 @@
         private System.Windows.Forms.Label categoryLabel;
         private System.Windows.Forms.Label subcategoryLabel;
         private System.Windows.Forms.ListView resultListView;
-<<<<<<< HEAD
         private System.Windows.Forms.ComboBox styleComboBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox sizeComboBox;
         private System.Windows.Forms.Label SizeLabel;
-=======
->>>>>>> faa1180141c4e4c54ee49aadd8a4fa6db1bbef73
+        private System.Windows.Forms.ComboBox classComboBox;
+        private System.Windows.Forms.Label classLabel;
+        private System.Windows.Forms.ComboBox colourComboBox;
+        private System.Windows.Forms.Label colourLabel;
     }
 }
 
