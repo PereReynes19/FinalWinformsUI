@@ -28,6 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection1 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
+            Syncfusion.Windows.Forms.Tools.InactiveStateCollection inactiveStateCollection1 = new Syncfusion.Windows.Forms.Tools.InactiveStateCollection();
+            Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection1 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.categoryComboBox = new System.Windows.Forms.ComboBox();
             this.subCategoryComboBox = new System.Windows.Forms.ComboBox();
             this.categoryLabel = new System.Windows.Forms.Label();
@@ -41,6 +45,14 @@
             this.classLabel = new System.Windows.Forms.Label();
             this.colourComboBox = new System.Windows.Forms.ComboBox();
             this.colourLabel = new System.Windows.Forms.Label();
+            this.productLineComboBox = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.queryTextBox = new System.Windows.Forms.TextBox();
+            this.lenguageToggleButton = new Syncfusion.Windows.Forms.Tools.ToggleButton();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.clearButton = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.lenguageToggleButton)).BeginInit();
             this.SuspendLayout();
             // 
             // categoryComboBox
@@ -56,7 +68,7 @@
             // subCategoryComboBox
             // 
             this.subCategoryComboBox.FormattingEnabled = true;
-            this.subCategoryComboBox.Location = new System.Drawing.Point(168, 27);
+            this.subCategoryComboBox.Location = new System.Drawing.Point(149, 27);
             this.subCategoryComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.subCategoryComboBox.Name = "subCategoryComboBox";
             this.subCategoryComboBox.Size = new System.Drawing.Size(111, 24);
@@ -75,7 +87,7 @@
             // subcategoryLabel
             // 
             this.subcategoryLabel.AutoSize = true;
-            this.subcategoryLabel.Location = new System.Drawing.Point(165, 7);
+            this.subcategoryLabel.Location = new System.Drawing.Point(146, 7);
             this.subcategoryLabel.Name = "subcategoryLabel";
             this.subcategoryLabel.Size = new System.Drawing.Size(85, 16);
             this.subcategoryLabel.TabIndex = 5;
@@ -84,12 +96,13 @@
             // resultListView
             // 
             this.resultListView.HideSelection = false;
-            this.resultListView.Location = new System.Drawing.Point(29, 139);
+            this.resultListView.Location = new System.Drawing.Point(16, 139);
             this.resultListView.Name = "resultListView";
-            this.resultListView.Size = new System.Drawing.Size(762, 354);
+            this.resultListView.Size = new System.Drawing.Size(654, 333);
             this.resultListView.TabIndex = 6;
             this.resultListView.UseCompatibleStateImageBehavior = false;
             this.resultListView.View = System.Windows.Forms.View.List;
+            this.resultListView.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.resultListView_MouseDoubleClick);
             // 
             // styleComboBox
             // 
@@ -163,11 +176,96 @@
             this.colourLabel.TabIndex = 14;
             this.colourLabel.Text = "Colour";
             // 
+            // productLineComboBox
+            // 
+            this.productLineComboBox.FormattingEnabled = true;
+            this.productLineComboBox.Location = new System.Drawing.Point(537, 27);
+            this.productLineComboBox.Name = "productLineComboBox";
+            this.productLineComboBox.Size = new System.Drawing.Size(96, 24);
+            this.productLineComboBox.TabIndex = 15;
+            this.productLineComboBox.SelectedIndexChanged += new System.EventHandler(this.productLineComboBox_SelectedIndexChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(534, 7);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(79, 16);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "ProductLine";
+            // 
+            // queryTextBox
+            // 
+            this.queryTextBox.Location = new System.Drawing.Point(16, 99);
+            this.queryTextBox.Name = "queryTextBox";
+            this.queryTextBox.Size = new System.Drawing.Size(244, 22);
+            this.queryTextBox.TabIndex = 17;
+            this.queryTextBox.TextChanged += new System.EventHandler(this.queryTextBox_TextChanged);
+            // 
+            // lenguageToggleButton
+            // 
+            activeStateCollection1.BackColor = System.Drawing.SystemColors.Window;
+            activeStateCollection1.BorderColor = System.Drawing.Color.DarkGray;
+            activeStateCollection1.ForeColor = System.Drawing.Color.Black;
+            activeStateCollection1.HoverColor = System.Drawing.Color.WhiteSmoke;
+            activeStateCollection1.Text = "FR";
+            this.lenguageToggleButton.ActiveState = activeStateCollection1;
+            this.lenguageToggleButton.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.lenguageToggleButton.ForeColor = System.Drawing.Color.Black;
+            inactiveStateCollection1.BackColor = System.Drawing.SystemColors.Window;
+            inactiveStateCollection1.BorderColor = System.Drawing.Color.DarkGray;
+            inactiveStateCollection1.HoverColor = System.Drawing.Color.WhiteSmoke;
+            inactiveStateCollection1.Text = "EN";
+            this.lenguageToggleButton.InactiveState = inactiveStateCollection1;
+            this.lenguageToggleButton.Location = new System.Drawing.Point(709, 93);
+            this.lenguageToggleButton.MinimumSize = new System.Drawing.Size(52, 20);
+            this.lenguageToggleButton.Name = "lenguageToggleButton";
+            this.lenguageToggleButton.Size = new System.Drawing.Size(86, 28);
+            sliderCollection1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
+            this.lenguageToggleButton.Slider = sliderCollection1;
+            this.lenguageToggleButton.TabIndex = 18;
+            this.lenguageToggleButton.Click += new System.EventHandler(this.lenguageToggleButton_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(690, 168);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(116, 40);
+            this.button1.TabIndex = 19;
+            this.button1.Text = "Available Products";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(690, 240);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(116, 41);
+            this.button2.TabIndex = 20;
+            this.button2.Text = "Non Avaliable Products";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // clearButton
+            // 
+            this.clearButton.Location = new System.Drawing.Point(690, 440);
+            this.clearButton.Name = "clearButton";
+            this.clearButton.Size = new System.Drawing.Size(105, 31);
+            this.clearButton.TabIndex = 21;
+            this.clearButton.Text = "CLEAR";
+            this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(817, 521);
+            this.Controls.Add(this.clearButton);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.lenguageToggleButton);
+            this.Controls.Add(this.queryTextBox);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.productLineComboBox);
             this.Controls.Add(this.colourLabel);
             this.Controls.Add(this.colourComboBox);
             this.Controls.Add(this.classLabel);
@@ -182,10 +280,12 @@
             this.Controls.Add(this.subCategoryComboBox);
             this.Controls.Add(this.categoryComboBox);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
             this.Text = "MainForm";
             this.Load += new System.EventHandler(this.MainForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.lenguageToggleButton)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -205,6 +305,13 @@
         private System.Windows.Forms.Label classLabel;
         private System.Windows.Forms.ComboBox colourComboBox;
         private System.Windows.Forms.Label colourLabel;
+        private System.Windows.Forms.ComboBox productLineComboBox;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox queryTextBox;
+        private Syncfusion.Windows.Forms.Tools.ToggleButton lenguageToggleButton;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button clearButton;
     }
 }
 
