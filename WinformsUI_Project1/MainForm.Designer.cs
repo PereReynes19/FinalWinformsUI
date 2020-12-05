@@ -49,9 +49,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.queryTextBox = new System.Windows.Forms.TextBox();
             this.lenguageToggleButton = new Syncfusion.Windows.Forms.Tools.ToggleButton();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.avaliableButton = new System.Windows.Forms.Button();
+            this.nonAvaliableButton = new System.Windows.Forms.Button();
             this.clearButton = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.productTextBox = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.lenguageToggleButton)).BeginInit();
             this.SuspendLayout();
             // 
@@ -98,7 +101,7 @@
             this.resultListView.HideSelection = false;
             this.resultListView.Location = new System.Drawing.Point(16, 139);
             this.resultListView.Name = "resultListView";
-            this.resultListView.Size = new System.Drawing.Size(654, 333);
+            this.resultListView.Size = new System.Drawing.Size(654, 349);
             this.resultListView.TabIndex = 6;
             this.resultListView.UseCompatibleStateImageBehavior = false;
             this.resultListView.View = System.Windows.Forms.View.List;
@@ -226,27 +229,29 @@
             this.lenguageToggleButton.TabIndex = 18;
             this.lenguageToggleButton.Click += new System.EventHandler(this.lenguageToggleButton_Click);
             // 
-            // button1
+            // avaliableButton
             // 
-            this.button1.Location = new System.Drawing.Point(690, 168);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(116, 40);
-            this.button1.TabIndex = 19;
-            this.button1.Text = "Available Products";
-            this.button1.UseVisualStyleBackColor = true;
+            this.avaliableButton.Location = new System.Drawing.Point(690, 168);
+            this.avaliableButton.Name = "avaliableButton";
+            this.avaliableButton.Size = new System.Drawing.Size(116, 40);
+            this.avaliableButton.TabIndex = 19;
+            this.avaliableButton.Text = "Available Products";
+            this.avaliableButton.UseVisualStyleBackColor = true;
+            this.avaliableButton.Click += new System.EventHandler(this.avaliableButton_Click);
             // 
-            // button2
+            // nonAvaliableButton
             // 
-            this.button2.Location = new System.Drawing.Point(690, 240);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(116, 41);
-            this.button2.TabIndex = 20;
-            this.button2.Text = "Non Avaliable Products";
-            this.button2.UseVisualStyleBackColor = true;
+            this.nonAvaliableButton.Location = new System.Drawing.Point(690, 240);
+            this.nonAvaliableButton.Name = "nonAvaliableButton";
+            this.nonAvaliableButton.Size = new System.Drawing.Size(116, 41);
+            this.nonAvaliableButton.TabIndex = 20;
+            this.nonAvaliableButton.Text = "Non Avaliable Products";
+            this.nonAvaliableButton.UseVisualStyleBackColor = true;
+            this.nonAvaliableButton.Click += new System.EventHandler(this.nonAvaliableButton_Click);
             // 
             // clearButton
             // 
-            this.clearButton.Location = new System.Drawing.Point(690, 440);
+            this.clearButton.Location = new System.Drawing.Point(690, 457);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(105, 31);
             this.clearButton.TabIndex = 21;
@@ -254,14 +259,43 @@
             this.clearButton.UseVisualStyleBackColor = true;
             this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(13, 80);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(135, 16);
+            this.label3.TabIndex = 22;
+            this.label3.Text = "Search ProducModel";
+            // 
+            // productTextBox
+            // 
+            this.productTextBox.Location = new System.Drawing.Point(298, 100);
+            this.productTextBox.Name = "productTextBox";
+            this.productTextBox.Size = new System.Drawing.Size(233, 22);
+            this.productTextBox.TabIndex = 23;
+            this.productTextBox.TextChanged += new System.EventHandler(this.productTextBox_TextChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(298, 81);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(100, 16);
+            this.label4.TabIndex = 24;
+            this.label4.Text = "Search Product";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(817, 521);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.productTextBox);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.clearButton);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.nonAvaliableButton);
+            this.Controls.Add(this.avaliableButton);
             this.Controls.Add(this.lenguageToggleButton);
             this.Controls.Add(this.queryTextBox);
             this.Controls.Add(this.label2);
@@ -309,9 +343,12 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox queryTextBox;
         private Syncfusion.Windows.Forms.Tools.ToggleButton lenguageToggleButton;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button avaliableButton;
+        private System.Windows.Forms.Button nonAvaliableButton;
         private System.Windows.Forms.Button clearButton;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox productTextBox;
+        private System.Windows.Forms.Label label4;
     }
 }
 
