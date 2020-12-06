@@ -55,6 +55,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.productTextBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.minLPTextBox = new System.Windows.Forms.TextBox();
+            this.maxLPTextBox = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.lenguageToggleButton)).BeginInit();
             this.SuspendLayout();
             // 
@@ -100,6 +104,7 @@
             // 
             this.resultListView.HideSelection = false;
             this.resultListView.Location = new System.Drawing.Point(16, 139);
+            this.resultListView.MultiSelect = false;
             this.resultListView.Name = "resultListView";
             this.resultListView.Size = new System.Drawing.Size(654, 349);
             this.resultListView.TabIndex = 6;
@@ -201,7 +206,7 @@
             // 
             this.queryTextBox.Location = new System.Drawing.Point(16, 99);
             this.queryTextBox.Name = "queryTextBox";
-            this.queryTextBox.Size = new System.Drawing.Size(244, 22);
+            this.queryTextBox.Size = new System.Drawing.Size(215, 22);
             this.queryTextBox.TabIndex = 17;
             this.queryTextBox.TextChanged += new System.EventHandler(this.queryTextBox_TextChanged);
             // 
@@ -220,7 +225,7 @@
             inactiveStateCollection1.HoverColor = System.Drawing.Color.WhiteSmoke;
             inactiveStateCollection1.Text = "EN";
             this.lenguageToggleButton.InactiveState = inactiveStateCollection1;
-            this.lenguageToggleButton.Location = new System.Drawing.Point(709, 93);
+            this.lenguageToggleButton.Location = new System.Drawing.Point(699, 409);
             this.lenguageToggleButton.MinimumSize = new System.Drawing.Size(52, 20);
             this.lenguageToggleButton.Name = "lenguageToggleButton";
             this.lenguageToggleButton.Size = new System.Drawing.Size(86, 28);
@@ -231,7 +236,7 @@
             // 
             // avaliableButton
             // 
-            this.avaliableButton.Location = new System.Drawing.Point(690, 168);
+            this.avaliableButton.Location = new System.Drawing.Point(690, 11);
             this.avaliableButton.Name = "avaliableButton";
             this.avaliableButton.Size = new System.Drawing.Size(116, 40);
             this.avaliableButton.TabIndex = 19;
@@ -241,7 +246,7 @@
             // 
             // nonAvaliableButton
             // 
-            this.nonAvaliableButton.Location = new System.Drawing.Point(690, 240);
+            this.nonAvaliableButton.Location = new System.Drawing.Point(689, 68);
             this.nonAvaliableButton.Name = "nonAvaliableButton";
             this.nonAvaliableButton.Size = new System.Drawing.Size(116, 41);
             this.nonAvaliableButton.TabIndex = 20;
@@ -270,26 +275,63 @@
             // 
             // productTextBox
             // 
-            this.productTextBox.Location = new System.Drawing.Point(298, 100);
+            this.productTextBox.Location = new System.Drawing.Point(260, 99);
             this.productTextBox.Name = "productTextBox";
-            this.productTextBox.Size = new System.Drawing.Size(233, 22);
+            this.productTextBox.Size = new System.Drawing.Size(212, 22);
             this.productTextBox.TabIndex = 23;
             this.productTextBox.TextChanged += new System.EventHandler(this.productTextBox_TextChanged);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(298, 81);
+            this.label4.Location = new System.Drawing.Point(257, 80);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(100, 16);
             this.label4.TabIndex = 24;
             this.label4.Text = "Search Product";
+            // 
+            // minLPTextBox
+            // 
+            this.minLPTextBox.Location = new System.Drawing.Point(499, 99);
+            this.minLPTextBox.Name = "minLPTextBox";
+            this.minLPTextBox.Size = new System.Drawing.Size(60, 22);
+            this.minLPTextBox.TabIndex = 25;
+            // 
+            // maxLPTextBox
+            // 
+            this.maxLPTextBox.Location = new System.Drawing.Point(573, 99);
+            this.maxLPTextBox.Name = "maxLPTextBox";
+            this.maxLPTextBox.Size = new System.Drawing.Size(60, 22);
+            this.maxLPTextBox.TabIndex = 26;
+            this.maxLPTextBox.TextChanged += new System.EventHandler(this.maxLPTextBox_TextChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(496, 80);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(63, 16);
+            this.label6.TabIndex = 28;
+            this.label6.Text = "Min Price";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(570, 80);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(67, 16);
+            this.label7.TabIndex = 29;
+            this.label7.Text = "Max Price";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(817, 521);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.maxLPTextBox);
+            this.Controls.Add(this.minLPTextBox);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.productTextBox);
             this.Controls.Add(this.label3);
@@ -349,6 +391,10 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox productTextBox;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox minLPTextBox;
+        private System.Windows.Forms.TextBox maxLPTextBox;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
     }
 }
 

@@ -225,7 +225,7 @@ namespace WinformsUI_Project1
 		{
 			using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("AdventureWorksDB")))
 			{
-				string productSQL = $"SELECT DISTINCT Production.Product.ProductLine FROM Production.Product INNER JOIN Production.ProductSubcategory ON Production.Product.ProductSubcategoryID = Production.ProductSubcategory.ProductSubcategoryID INNER JOIN Production.ProductCategory ON Production.ProductSubcategory.ProductCategoryID = Production.ProductCategory.ProductCategoryID INNER JOIN Production.ProductModel ON Production.Product.ProductModelID = Production.ProductModel.ProductModelID INNER JOIN Production.ProductModelProductDescriptionCulture ON Production.ProductModel.ProductModelID = Production.ProductModelProductDescriptionCulture.ProductModelID  INNER JOIN Production.ProductDescription ON Production.ProductModelProductDescriptionCulture.ProductDescriptionID = Production.ProductDescription.ProductDescriptionID WHERE ProductModelProductDescriptionCulture.CultureID = 'en'AND Production.ProductSubcategory.Name = '{subCategoryComboBox.SelectedItem}' AND Product.ProductModelID IS NOT NULL";
+				string productSQL = $"SELECT DISTINCT Production.Product.ProductLine FROM Production.Product INNER JOIN Production.ProductSubcategory ON Production.Product.ProductSubcategoryID = Production.ProductSubcategory.ProductSubcategoryID INNER JOIN Production.ProductCategory ON Production.ProductSubcategory.ProductCategoryID = Production.ProductCategory.ProductCategoryID INNER JOIN Production.ProductModel ON Production.Product.ProductModelID = Production.ProductModel.ProductModelID INNER JOIN Production.ProductModelProductDescriptionCulture ON Production.ProductModel.ProductModelID = Production.ProductModelProductDescriptionCulture.ProductModelID  INNER JOIN Production.ProductDescription ON Production.ProductModelProductDescriptionCulture.ProductDescriptionID = Production.ProductDescription.ProductDescriptionID WHERE ProductModelProductDescriptionCulture.CultureID = 'en' AND Production.ProductSubcategory.Name = '{subCategoryComboBox.SelectedItem}' AND Product.ProductModelID IS NOT NULL";
 				List<string> products = new List<string>();
 				products = connection.Query<string>(productSQL).ToList();
 				productLineComboBox.Items.Clear();
@@ -263,7 +263,7 @@ namespace WinformsUI_Project1
 		{
 			using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("AdventureWorksDB")))
 			{
-				string textSQL = $"SELECT DISTINCT Production.ProductModel.Name, Production.ProductDescription.Description FROM Production.Product INNER JOIN Production.ProductSubcategory ON Production.Product.ProductSubcategoryID = Production.ProductSubcategory.ProductSubcategoryID INNER JOIN Production.ProductModel ON Production.Product.ProductModelID = Production.ProductModel.ProductModelID INNER JOIN Production.ProductCategory ON Production.ProductSubcategory.ProductCategoryID = Production.ProductCategory.ProductCategoryID INNER JOIN Production.ProductModelProductDescriptionCulture ON Production.ProductModel.ProductModelID = Production.ProductModelProductDescriptionCulture.ProductModelID INNER JOIN Production.ProductDescription ON Production.ProductDescription.ProductDescriptionID = Production.ProductModelProductDescriptionCulture.ProductDescriptionID WHERE Production.ProductModelProductDescriptionCulture.CultureID = '{lenguatge}' AND Production.ProductModel.Name LIKE '%{queryTextBox.Text}%' {avaliable} AND Product.ProductModelID IS NOT NULL";
+				string textSQL = $"SELECT DISTINCT Production.ProductModel.Name, Production.ProductDescription.Description FROM Production.Product INNER JOIN Production.ProductSubcategory ON Production.Product.ProductSubcategoryID = Production.ProductSubcategory.ProductSubcategoryID INNER JOIN Production.ProductModel ON Production.Product.ProductModelID = Production.ProductModel.ProductModelID INNER JOIN Production.ProductCategory ON Production.ProductSubcategory.ProductCategoryID = Production.ProductCategory.ProductCategoryID INNER JOIN Production.ProductModelProductDescriptionCulture ON Production.ProductModel.ProductModelID = Production.ProductModelProductDescriptionCulture.ProductModelID INNER JOIN Production.ProductDescription ON Production.ProductDescription.ProductDescriptionID = Production.ProductModelProductDescriptionCulture.ProductDescriptionID WHERE Production.ProductModelProductDescriptionCulture.CultureID = '{lenguatge}' AND Production.ProductSubcategory.Name = '{subCategoryComboBox.SelectedItem}' AND Production.ProductModel.Name LIKE '%{queryTextBox.Text}%' {avaliable} AND Product.ProductModelID IS NOT NULL";
 				productModels = new List<ProductModel>();
 				productModels = connection.Query<ProductModel>(textSQL).ToList();
 				resultListView.Items.Clear();
@@ -277,7 +277,7 @@ namespace WinformsUI_Project1
 		{
 			using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("AdventureWorksDB")))
 			{
-				string productSQL = $"SELECT DISTINCT Production.Product.Name, Production.ProductDescription.Description FROM Production.Product INNER JOIN Production.ProductSubcategory ON Production.Product.ProductSubcategoryID = Production.ProductSubcategory.ProductSubcategoryID INNER JOIN Production.ProductModel ON Production.Product.ProductModelID = Production.ProductModel.ProductModelID INNER JOIN Production.ProductCategory ON Production.ProductSubcategory.ProductCategoryID = Production.ProductCategory.ProductCategoryID INNER JOIN Production.ProductModelProductDescriptionCulture ON Production.ProductModel.ProductModelID = Production.ProductModelProductDescriptionCulture.ProductModelID INNER JOIN Production.ProductDescription ON Production.ProductDescription.ProductDescriptionID = Production.ProductModelProductDescriptionCulture.ProductDescriptionID WHERE Production.ProductModelProductDescriptionCulture.CultureID = '{lenguatge}' AND Production.ProductModel.Name LIKE '%{productTextBox.Text}%' {avaliable} AND Product.ProductModelID IS NOT NULL";
+				string productSQL = $"SELECT DISTINCT Production.Product.Name, Production.ProductDescription.Description FROM Production.Product INNER JOIN Production.ProductSubcategory ON Production.Product.ProductSubcategoryID = Production.ProductSubcategory.ProductSubcategoryID INNER JOIN Production.ProductModel ON Production.Product.ProductModelID = Production.ProductModel.ProductModelID INNER JOIN Production.ProductCategory ON Production.ProductSubcategory.ProductCategoryID = Production.ProductCategory.ProductCategoryID INNER JOIN Production.ProductModelProductDescriptionCulture ON Production.ProductModel.ProductModelID = Production.ProductModelProductDescriptionCulture.ProductModelID INNER JOIN Production.ProductDescription ON Production.ProductDescription.ProductDescriptionID = Production.ProductModelProductDescriptionCulture.ProductDescriptionID WHERE Production.ProductModelProductDescriptionCulture.CultureID = '{lenguatge}' AND Production.ProductSubcategory.Name = '{subCategoryComboBox.SelectedItem}' AND Production.ProductModel.Name LIKE '%{productTextBox.Text}%' {avaliable} AND Product.ProductModelID IS NOT NULL";
 				products = new List<Product>();
 				products = connection.Query<Product>(productSQL).ToList();
 				resultListView.Items.Clear();
@@ -294,7 +294,7 @@ namespace WinformsUI_Project1
 		private void MainForm_Load(object sender, EventArgs e)
 		{
 			SelectCategory();
-
+			minLPTextBox.Text = "0";
 		}
 
 		private void categoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -382,10 +382,13 @@ namespace WinformsUI_Project1
 		}
 		private void resultListView_MouseDoubleClick(object sender, MouseEventArgs e)
 		{
+			string productSelectet = resultListView.SelectedItems[0].Text;
+			int productId = int.Parse(productSelectet.Substring(0, productSelectet.IndexOf(',')));
+				 
 			var senderList = (ListView)sender;
 			if (senderList.SelectedItems.Count == 1)
 			{
-				ProductForm pf = new ProductForm();
+				ProductForm pf = new ProductForm(productId);
 				pf.ShowDialog();
 			}
 		}
@@ -409,12 +412,26 @@ namespace WinformsUI_Project1
 
 		private void nonAvaliableButton_Click(object sender, EventArgs e)
 		{
-			avaliable = "AND Production.Product.SellEndDate IS NULL";
+			avaliable = "";
 		}
 
 		private void productTextBox_TextChanged(object sender, EventArgs e)
 		{
 			productText();
+		}
+        private void maxLPTextBox_TextChanged(object sender, EventArgs e)
+        {
+			using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("AdventureWorksDB")))
+			{
+				string maxPrice = $"SELECT DISTINCT Production.ProductModel.Name, Production.ProductDescription.Description FROM Production.Product INNER JOIN Production.ProductSubcategory ON Production.Product.ProductSubcategoryID = Production.ProductSubcategory.ProductSubcategoryID INNER JOIN Production.ProductModel ON Production.Product.ProductModelID = Production.ProductModel.ProductModelID INNER JOIN Production.ProductCategory ON Production.ProductSubcategory.ProductCategoryID = Production.ProductCategory.ProductCategoryID INNER JOIN Production.ProductModelProductDescriptionCulture ON Production.ProductModel.ProductModelID = Production.ProductModelProductDescriptionCulture.ProductModelID INNER JOIN Production.ProductDescription ON Production.ProductDescription.ProductDescriptionID = Production.ProductModelProductDescriptionCulture.ProductDescriptionID WHERE Production.ProductModelProductDescriptionCulture.CultureID = '{lenguatge}' AND Production.ProductSubcategory.Name = '{subCategoryComboBox.SelectedItem}' AND Production.Product.ListPrice BETWEEN {minLPTextBox.Text} AND {maxLPTextBox.Text} {avaliable} AND Product.ProductModelID IS NOT NULL";
+				products = new List<Product>();
+				products = connection.Query<Product>(maxPrice).ToList();
+				resultListView.Items.Clear();
+				foreach (Product product in products)
+				{
+					resultListView.Items.Add(product.ToString());
+				}
+			}
 		}
 	}
 }
