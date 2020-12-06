@@ -382,13 +382,12 @@ namespace WinformsUI_Project1
 		}
 		private void resultListView_MouseDoubleClick(object sender, MouseEventArgs e)
 		{
-			string productSelectet = resultListView.SelectedItems[0].Text;
-			int productId = int.Parse(productSelectet.Substring(0, productSelectet.IndexOf(',')));
-				 
-			var senderList = (ListView)sender;
-			if (senderList.SelectedItems.Count == 1)
+			using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("AdventureWorksDB")))
 			{
-				ProductForm pf = new ProductForm(productId);
+				string productSelectet = resultListView.SelectedItems[0].Text;
+				productSelectet = productSelectet.Split(',')[0];
+
+				ProductForm pf = new ProductForm(productSelectet);
 				pf.ShowDialog();
 			}
 		}

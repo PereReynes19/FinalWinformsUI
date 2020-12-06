@@ -19,10 +19,11 @@ namespace WinformsUI_Project1
         public string ProducLine { get; set; }
         public string Class { get; set; }
         public string Style { get; set; }
+        public int ProductModelID { get; set; }
 
         public override string ToString()
         {
-            return $"{Category}, {Subcategory}, {ProducModel}, {Description}, {ProductNumber}, {Color}, {ListPrice}, {Size}, {ProducLine}, {Class}, {Style}";
+            return $"{Category}, {Subcategory}, {ProducModel}, {Description}, {ProductNumber}, {Color}, {ListPrice}, {Size}, {ProducLine}, {Class}, {Style}, {ProductModelID}";
         }
     }
 }
